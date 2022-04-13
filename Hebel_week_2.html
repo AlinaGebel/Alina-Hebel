@@ -7,7 +7,9 @@
 	<a-scene>
 		<a-sky color="#ee5d5d"> </a-sky>
 		<a-torus animation="property: position; to: 2 1 -5; dur: 5000; easing: linear; loop: false"
-			 position="-2 1 -5" color="green" radius="1.2"> </a-torus>
+			 position="-2 1 -5" color="green" radius="1.2" 
+			 animation="property: components.material.material.color;
+			type: color; from: green; to: red; loop: true; dur: 10000"> </a-torus>
 		<a-cylinder color="yellow" height="1.9" radius="0.05"
 			 position="-2 -1 -5"> </a-cylinder>
 		<a-cylinder color="yellow" height="2" radius="0.05"
@@ -18,7 +20,7 @@
 		<a-image src="tecture.jpg" width="7" height="7" rotation="-55 0 0"
 			 position="-2 -2 -5"></a-image> 
 		<a-text color='black' width="10" position="-0.5 1 -6.2"
-			 animation="property: rotation; to: 0 360 0; loop: true; dur: 4000"
+			 animation="property: rotation; to: 0 270 0; loop: true; dur: 4000"
 			 value="Ласкаво просимо до VR!" font="a_OldTyper_Italic-msdf.json" negate="false"> </a-text>
 	</a-scene>
 </html>

@@ -1,39 +1,34 @@
 <!DOCTYPE html>
 <html>
 
- <title>Сонячна система</title>
+ <title>Р—Р°РІРґР°РЅРЅСЏ С‡РµС‚РІРµСЂС‚РѕРіРѕ С‚РёР¶РЅСЏ</title>
  <meta charset="utf-8">
 
  <script src="https://aframe.io/releases/1.2.0/aframe.min.js">  </script>
 
  <script type="text/javascript">
  	const day = 24.0*60*60; 
-	AFRAME.registerComponent('planet', {schema: {name: {type: 'string', default: ""}, //ім'я планети
- 		//середня відстань планети від Сонця
+	AFRAME.registerComponent('planet', {schema: {name: {type: 'string', default: ""}, 
  	dist: {type: 'number', default: 0},
- 	mass: {type: 'number', default: 0}, //маса планети, кг
- 	T: {type: 'int', default: 0}, //планетарний рік, земних днів
- 	v: {type: 'array', default: [0,0,0]}, //вектор швидкості
- 	a: {type: 'array', default: [0,0,0]}, //вектор прискорення
- 		//координатний радіус-вектор
+ 	mass: {type: 'number', default: 0}, 
+ 	T: {type: 'int', default: 0},
+ 	v: {type: 'array', default: [0,0,0]}, 
+ 	a: {type: 'array', default: [0,0,0]}, 
  	pos: {type: 'array', default: [0,0,0]}	},
  
 	init: function () {
- 	this.data.T*=day; //переводимо із земних днів у секунди
- 	this.data.pos[0]=this.data.dist; //розташовуємо на вісі x
- 		//візуальну позицію виражаємо у мільйонах кілометрів
+ 	this.data.T*=day; 
+ 	this.data.pos[0]=this.data.dist; 
  	this.el.setAttribute('position',this.data.dist/1e9+' 0 0');
- 	if(this.data.T!=0)//для всіх об'єктів, крім Сонця,
- 		//обчислюємо початкову швидкість вздовж вісі y
+ 	if(this.data.T!=0)
  	this.data.v[1] = 2*Math.PI*this.data.dist/this.data.T;
  	}});
 
  AFRAME.registerComponent('main', {
  	init: function() {this.solar_system = document.querySelectorAll('[planet]');},
  	tick: function (time, deltaTime) {
- 		const dt = day/3; //крок інтегрування
- 		const G=6.67e-11; //гравітаційна стала
- 		
+ 		const dt = day/3; 
+ 		const G=6.67e-11;
 		for(var i = 0; i<this.solar_system.length; i++) {
  			planet_i=this.solar_system[i].getAttribute('planet');
  			planet_i.a[0]=planet_i.a[1]=planet_i.a[2]=0;
@@ -63,6 +58,9 @@
 
  <a-assets>
       <img id="8" src="neptun.png"> 
+      <img id="3" src="zemlya.PNG">  
+      <img id="6" src="saturn.PNG">
+      <img id="4" src="mars.PNG">
   </a-assets>
 
  
@@ -95,7 +93,7 @@
 		  T: 4332.589; name: Yupiter"></a-entity>
  
 	<a-entity geometry="primitive: sphere; radius: 58.232"
-		  material="color: #996633" planet="dist: 1429.3e9; mass: 5.6846e26; T:
+		  material="color: #6" planet="dist: 1429.3e9; mass: 5.6846e26; T:
 		  10759.22; name: Saturn"></a-entity>
  
 	<a-entity geometry="primitive: sphere; radius: 25.362"

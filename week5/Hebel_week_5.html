@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
 	<meta charset="utf-8">
- 	<title>Завдання четвертого тижня</title>
+ 	<title>Завдання п'ятого тижня</title>
 
  <script src="https://aframe.io/releases/1.2.0/aframe.min.js">  </script>
  <script src="AR.js-master/aframe/build/aframe-ar.js"> </script>
@@ -22,9 +22,59 @@
 			<a-entity position="0 0 1" particle-system="preset: snow; size: 10"></a-entity>
 		</a-marker>
 
-		<a-marker type="barcode" value='6'>'> </a-marker>
-			<a-entity geometry="primitive: box; height: 1; width: 1; depth: 1;" 
-				  position="0 0.5 0" material="color: grey; "> </a-box>
+		<a-marker type="barcode" value='6'> 
+			<a-entity geometry="primitive: box" material="color: red"
+				animation__mouseenter="property: rotation; from:0 0 0; to: 0 0 360; startEvents: mouseenter; dur: 1000;" 
+				animation__mouseleave="property: components.material.material.color; type: color; from: blue; to: red; startEvents: mouseleave; dur: 1000;"> </a-entity>
+		</a-marker>
+
+		<a-marker type="barcode" value='1'> 
+			<a-box position="0 0.5 0" material="color: red; "> </a-box> 
+		</a-marker>
+		<a-marker type="barcode" value='2'> 
+			<a-box position="0 0.5 0" material="color: red; "> </a-box> 
+		</a-marker>
+		<a-marker type="barcode" value='3'> 
+			<a-box position="0 0.5 0" material="color: red; "> </a-box> 
+		</a-marker>
+		<a-marker type="barcode" value='4'> 
+			<a-box position="0 0.5 0" material="color: red; "> </a-box> 
+		</a-marker>
+		<a-marker type="barcode" value='5'> 
+			<a-box position="0 0.5 0" material="color: red; "> </a-box> 
+		</a-marker>
+		<a-marker type="barcode" value='10'> 
+			<a-box position="0 0.5 0" material="color: red; "> </a-box> 
+		</a-marker>
+		<a-marker type="barcode" value='7'> 
+			<a-box position="0 0.5 0" material="color: red; "> </a-box> 
+		</a-marker>
+		<a-marker type="barcode" value='8'> 
+			<a-box position="0 0.5 0" material="color: red; "> </a-box> 
+		</a-marker>
+		<a-marker type="barcode" value='9'> 
+			<a-box position="0 0.5 0" material="color: red; "> </a-box> 
+		</a-marker>
+		<a-marker type="barcode" value='11'> 
+			<a-box position="0 0.5 0" material="color: red; "> </a-box> 
+		</a-marker>
+		<a-marker type="barcode" value='12'> 
+			<a-box position="0 0.5 0" material="color: red; "> </a-box> 
+		</a-marker>
+		<a-marker type="barcode" value='13'> 
+			<a-box position="0 0.5 0" material="color: red; "> </a-box> 
+		</a-marker>
+		<a-marker type="barcode" value='14'> 
+			<a-box position="0 0.5 0" material="color: red; "> </a-box> 
+		</a-marker>
+		<a-marker type="barcode" value='15'> 
+			<a-box position="0 0.5 0" material="color: red; "> </a-box> 
+		</a-marker>
+		<a-marker type="barcode" value='16'> 
+			<a-box position="0 0.5 0" material="color: red; "> </a-box> 
+		</a-marker>
+		<a-marker type="barcode" value='17'> 
+			<a-box position="0 0.5 0" material="color: red; "> </a-box> 
 		</a-marker>
 
 		

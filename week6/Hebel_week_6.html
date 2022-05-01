@@ -3,6 +3,8 @@
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
     <script src="AR.js-master/aframe/build/aframe-ar.js"></script>
     <script type=" text/javascript">
+        let markerVisible = { A: false, B: false, C: false, D: false, F: false };
+
         AFRAME.registerComponent('registerevents', {
             init: function () {
                 var marker = this.el;
@@ -12,8 +14,6 @@
                 marker.addEventListener('markerLost', function() {
                     //console.log('markerLost', marker.id); });}});
                     markerVisible[ marker.id ] = false;
-
-        let markerVisible = { A: false, B: false, C: false, D: false, F: false };
 
         AFRAME.registerComponent('run', {
             init: function() {
@@ -33,7 +33,7 @@
                 let geometry=new THREE.CylinderGeometry( 0.05, 0.05, 1, 12);
                 
                 geometry.applyMatrix( new THREE.Matrix4().makeTranslation(0, 0.5, 0 ) );
-                geometry.applyMatrix( new THREE.Matrix4().makeRotationX(THREE.Math.degToRad( 90 )));
+                geometry.applyMatrix( new THREE.Matrix4().makeRotationX(THREE.Math.degToRad( 90)));
  
                 this.cylinderAB = new THREE.Mesh( geometry, material );
                 this.lineAB = document.querySelector('#lineAB').object3D;

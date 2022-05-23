@@ -25,9 +25,6 @@ function init() {
         light.position.set(-100, 200, 100);
     scene.add(light); //розміщення точкового джерела світла на сцені
  
-    const texture = new THREE.TextureLoader().load( "coke.png" );
-
-
     var cylgeometry = new THREE.CylinderGeometry(3, 3, 7, 7);
     var cylmaterial = new THREE.MeshLambertMaterial();
     var cylmesh = new THREE.Mesh(cylgeometry, cylmaterial); //білий матеріал, що відбиває промені

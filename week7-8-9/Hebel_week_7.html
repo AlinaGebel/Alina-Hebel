@@ -43,32 +43,32 @@
 
 		animate();
 
-		var pyramidgeometry=new THREE.CylinderGeometry(0, 0.8, 2, 4);
-           var pyramidmaterial=new THREE.MeshLambertMaterial({color: 0xF3FFE2});
+		var pyramidgeometry=new THREE.CylinderGeometry(1.62, 3.81, 5, 12);
+           var pyramidmaterial=new THREE.MeshLambertMaterial({color: 0x8641FF});
            var pyramidmesh=new THREE.Mesh(pyramidgeometry, pyramidmaterial);
-           		pyramidmesh.position.set(0, 2, -10);
+           		pyramidmesh.position.set(0, 4, -10);
            		scene.add(pyramidmesh);
             var lightOne=new THREE.AmbientLight(0xffff, 0.5);
              	scene.add(lightOne);
             var lightTwo=new THREE.PointLight(0xffff, 0.5);
              	scene.add(lightTwo);
 
-        var boxgeometry=new THREE.BoxGeometry(1, 1, 1);
+        var boxgeometry=new THREE.BoxGeometry(3, 3, 3);
   			var boxmaterial=new THREE.MeshNormalMaterial({color: 0xFF0000,transparent: true, opacity: 1});
            	var boxmesh=new THREE.Mesh(boxgeometry, boxmaterial);
-           boxmesh.position.set(-0.9, 0, -6);
+           boxmesh.position.set(-1.9, -1.5, -6);
            scene.add(boxmesh);
 
-           var spheregeometry=new THREE.SphereGeometry(0.5);
-           var spherematerial=new THREE.LineBasicMaterial({color: 0x888888});
+           var spheregeometry=new THREE.SphereGeometry(10, 4, 20);
+           var spherematerial=new THREE.LineBasicMaterial({color: 0x0056C5});
            var spheremesh=new THREE.Line(spheregeometry, spherematerial);
                spheremesh.position.set(0.9, 0, -6);
            scene.add(spheremesh);
 
-           var circlegeometry=new THREE.CircleBufferGeometry(0.5);
-           var circlematerial=new THREE.MeshStandardMaterial({color: 0x098877,roughness: 90.0,metalness: 0.2});
+           var circlegeometry=new THREE.CircleBufferGeometry(3, 12);
+           var circlematerial=new THREE.MeshStandardMaterial({color: 0xf08080,roughness: 90.0,metalness: 0.2});
            var circlemesh=new THREE.Mesh(circlegeometry, circlematerial);
-           circlemesh.position.set(2, 0, -6);
+           circlemesh.position.set(2, 2, -6);
            circlemesh.rotation.set(0, 0.5, 0);
            scene.add(circlemesh);
 

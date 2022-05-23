@@ -21,20 +21,17 @@ function init() {
     
     renderer.setClearColor(0xffb6c1, 1); //встановити колір фону холсту
  
-   /* var light = new THREE.PointLight(0xffffff); //створення точкового джерела світла білого кольору
-        light.position.set(-100, 200, 100);
-    scene.add(light); //розміщення точкового джерела світла на сцені*/
- 
-    const texture = new THREE.TextureLoader().load( 'coke.png' );
-    // immediately use the texture for material creation
-    const material = new THREE.MeshBasicMaterial( { map: texture } );
+    var light = new THREE.PointLight(0xffffff);
+    light.position.set(-100, 200, 100);
+    scene.add(light);
 
+    var loader = new THREE.TextureLoader();
 
     var cylgeometry = new THREE.CylinderGeometry(3, 3, 7, 7);
-    var cylmaterial = new THREE.MeshLambertMaterial();
-    var cylmesh = new THREE.Mesh(cylgeometry, cylmaterial); //білий матеріал, що відбиває промені
-    
-    cylmesh.position.set(0.9, -5, -6);
+    var cylmaterial = new THREE.MeshLambertMaterial({map: loader.load('https://www.crushpixel.com/big-static16/preview4/white-abstract-honeycomb-hexagone-background-2503166.jpg')});
+    var cylmesh = new THREE.Mesh(cylgeometry, cylmaterial);
+        cylmesh.position.set(0.9, -5, -6);
+        
     scene.add(cylmesh); // розміщення об'єкту на сцені'
     
     controls = new THREE.OrbitControls(camera,renderer.domElement);

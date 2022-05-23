@@ -21,20 +21,14 @@ function init() {
     
     renderer.setClearColor(0xffb6c1, 1); //встановити колір фону холсту
  
-    var light = new THREE.PointLight(0xffffff); //створення точкового джерела світла білого кольору
+   /* var light = new THREE.PointLight(0xffffff); //створення точкового джерела світла білого кольору
         light.position.set(-100, 200, 100);
-    scene.add(light); //розміщення точкового джерела світла на сцені
+    scene.add(light); //розміщення точкового джерела світла на сцені*/
  
     const texture = new THREE.TextureLoader().load( 'coke.png' );
     // immediately use the texture for material creation
     const material = new THREE.MeshBasicMaterial( { map: texture } );
 
-    function ( texture ) {
-        // in this example we create the material when the texture is loaded
-        const material = new THREE.MeshBasicMaterial( {
-            map: texture
-         } );
-    },
 
     var cylgeometry = new THREE.CylinderGeometry(3, 3, 7, 7);
     var cylmaterial = new THREE.MeshLambertMaterial();

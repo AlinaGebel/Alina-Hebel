@@ -28,7 +28,7 @@ function init() {
     var loader = new THREE.TextureLoader();
 
     var cylgeometry = new THREE.CylinderGeometry(3, 3, 7, 7);
-    var cylmaterial = new THREE.MeshLambertMaterial({map: loader.load('https://www.crushpixel.com/big-static16/preview4/white-abstract-honeycomb-hexagone-background-2503166.jpg')});
+    var cylmaterial = new THREE.MeshLambertMaterial({map: loader.load('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSTuF63CMV9_vfa18nW7OjizcjhizOQWvlkBw&usqp=CAU')});
     var cylmesh = new THREE.Mesh(cylgeometry, cylmaterial);
         cylmesh.position.set(0.9, -5, -6);
         

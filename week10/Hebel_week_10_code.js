@@ -26,6 +26,8 @@ function init() {
     scene.add(light); //розміщення точкового джерела світла на сцені
  
     const texture = new THREE.TextureLoader().load( 'coke.png' );
+    // immediately use the texture for material creation
+    const material = new THREE.MeshBasicMaterial( { map: texture } );
 
     var cylgeometry = new THREE.CylinderGeometry(3, 3, 7, 7);
     var cylmaterial = new THREE.MeshLambertMaterial();

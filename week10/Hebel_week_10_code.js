@@ -29,6 +29,13 @@ function init() {
     // immediately use the texture for material creation
     const material = new THREE.MeshBasicMaterial( { map: texture } );
 
+    function ( texture ) {
+        // in this example we create the material when the texture is loaded
+        const material = new THREE.MeshBasicMaterial( {
+            map: texture
+         } );
+    },
+
     var cylgeometry = new THREE.CylinderGeometry(3, 3, 7, 7);
     var cylmaterial = new THREE.MeshLambertMaterial();
     var cylmesh = new THREE.Mesh(cylgeometry, cylmaterial); //білий матеріал, що відбиває промені

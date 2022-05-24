@@ -6,7 +6,8 @@
 <body>
 	<canvas id="Canvas"></canvas>
 	<script src="https://threejs.org/build/three.min.js"></script>
-	<script src="https://raw.githack.com/mrdoob/three.js/dev/examples/js/loaders/OBJLoader.js"></script>
+	//<script src="https://raw.githack.com/mrdoob/three.js/dev/examples/js/loaders/OBJLoader.js"></script>
+	<script src="https://raw.githack.com/mrdoob/three.js/dev/examples/js/loaders/GLTFLoader.js"></script>
 <script>
 	
 	
@@ -25,18 +26,24 @@
 	var lightTwo=new THREE.PointLight(0xfffff, 0.5);
 	scene.add(lightTwo);
 
-	var objLoader = new THREE.OBJLoader();
-	objLoader.load("Boat.obj", function(mesh){
-		mesh.traverse(function(node){
-			if(node instanceof THREE.Mesh){
-				node.castShadow = true;
-				node.receiveShadow = true;
-			}
-		});
-		scene.add(mesh);
-		mesh.position.set(-80, -50, -150);
-		mesh.rotation.y = -Math.PI/4;
-	});
+	var GLTF = new THREE.GLTFLoader(); 
+        GLTF.load("burger.glb", function(mesh){
+                           
+        burger = mesh.scene;
+		burger.traverse(function(obj){
+            if (obj.isMesh) {
+                obj.castShadow = true;
+                obj.receiveShadow = true;
+                }
+        	});
+                
+        	burger.position.set(-100, -20, 300); 
+
+        	scene.add(burger);
+        });            
+
+        controls = new THREE.OrbitControls(camera,renderer.domElement); 
+        controls.autoRotate = true;
 
 	requestAnimationFrame(render);
 

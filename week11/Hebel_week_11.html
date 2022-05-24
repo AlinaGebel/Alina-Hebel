@@ -17,7 +17,7 @@
 	document.body.appendChild(renderer.domElement);
 
     var camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 10000);
-    camera.position.set(-368, 267, 398);
+    camera.position.set(-10, 267, 398);
             
 
     var scene = new THREE.Object3D();
@@ -40,20 +40,20 @@
 
 	var GLTF = new THREE.GLTFLoader(); 
        
-    GLTF.load("https://raw.githack.com/mrdoob/three.js/dev/examples/models/gltf/Nefertiti/Nefertiti.glb", function(mesh){
+    GLTF.load("https://github.com/mrdoob/three.js/blob/dev/examples/models/gltf/Flamingo.glb", function(mesh){
                            
-                nefertiti = mesh.scene;
+                flamingo = mesh.scene;
 
-                nefertiti.traverse(function(obj){
+                flamingo.traverse(function(obj){
                     if (obj.isMesh) {
                         obj.castShadow = true;
                         obj.receiveShadow = true;
                     }
                 });
                 
-                nefertiti.position.set(-100, -20, 300); 
+                flamingo.position.set(-100, -20, 300); 
 
-                scene.add(nefertiti);
+                scene.add(flamingo);
             });            
 
         controls = new THREE.OrbitControls(camera,renderer.domElement); 

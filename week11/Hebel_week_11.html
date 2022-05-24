@@ -9,8 +9,9 @@
 	<script src="https://raw.githack.com/mrdoob/three.js/dev/examples/js/loaders/OBJLoader.js"></script>
 <script>
 	
+	
 	var renderer = new THREE.WebGLRenderer({canvas: document.getElementById('Canvas'), antialias: true});
-	renderer.setClearColor(0x333333);
+	renderer.setClearColor(0xffb6c1);
 	renderer.setPixelRatio(window.devicePixelRatio);
 	renderer.setSize(window.innerWidth, window.innerHeight);
 
@@ -21,8 +22,8 @@
 	var lightOne = new THREE.AmbientLight(0xfffff, 0.5);
 	scene.add(lightOne);
 
-	/*var lightTwo=new THREE.PointLight(0xfffff, 0.5);
-	scene.add(lightTwo);*/
+	var lightTwo=new THREE.PointLight(0xfffff, 0.5);
+	scene.add(lightTwo);
 
 	var objLoader = new THREE.OBJLoader();
 	objLoader.load("Boat.obj", function(mesh){
@@ -44,6 +45,13 @@
 		renderer.render(scene, camera);
 		requestAnimationFrame(render);
 	}
+
+	function animate()
+{
+    controls.update();
+    requestAnimationFrame(animate);
+    renderer.render(scene, camera);
+}
 	
 	</script>
 </body>

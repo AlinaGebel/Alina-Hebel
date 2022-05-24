@@ -1,44 +1,87 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>11</title>
+	<title>Завдання 11 тижня</title>
 </head>
 <body>
+	<canvas id="Canvas"></canvas>
 	<script src="https://threejs.org/build/three.min.js"></script>
-	<script src="https://raw.githack.com/mrdoob/three.js/dev/examples/js/loaders/GLTFLoader.js"></script>
+	<script src="https://raw.githack.com/mrdoob/three.js/dev/examples/js/loaders/OBJLoader.js"></script>
+<script>
+	
+	function init() {
+    scene = new THREE.Scene(); //створення сцени ("система")
+    
+    var WIDTH = window.innerWidth, HEIGHT = window.innerHeight;
+    
+    renderer = new THREE.WebGLRenderer({antialias: true}); //створення рендеру
+    renderer.setSize(WIDTH, HEIGHT);  //масштабування холсту до розміру вікна
+    
+    document.body.appendChild(renderer.domElement);
+    
+    camera = new THREE.PerspectiveCamera(45, WIDTH/ HEIGHT, 0.1,20000); //кут огляду 45 гр., поле зору (0.1, 2000)
+    camera.position.set(0, 6, 0); //підняти камеру
+    scene.add(camera); //розміщення камери на сцені
+    
+    window.addEventListener('resize', function() { //обробник подій зміни розміру вікна
+        var WIDTH = window.innerWidth, HEIGHT = window.innerHeight; //визначити розміру вікна
+       // renderer.setSize(WIDTH, HEIGHT); //масштабування до нового розміру вікна
+        camera.aspect = WIDTH / HEIGHT; //зміна співвідношення сторін
+        camera.updateProjectMatrix(); 
+    });
+    
+    renderer.setClearColor(0xffb6c1, 1); //встановити колір фону холсту
+ 
+    
+    var loader = new THREE.TextureLoader();
+var lightOne = new THREE.AmbientLight(0xfffff, 0.5);
+	scene.add(lightOne);
 
-	<script>
-		camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 20000);
-		scene = new THREE.Scene();
-		camera.position.z = 10;
+	var lightTwo=new THREE.PointLight(0xfffff, 0.5);
+	scene.add(lightTwo);
 
-		renderer = new THREE.WebGLRenderer({alpha: true, antialias: true});
-		renderer.setClearColor(0x333333);
-		renderer.setSize(window.innerWidth, window.innerHeight);
+	var objLoader = new THREE.OBJLoader();
+	objLoader.load("Boat.obj", function(mesh){
+		mesh.traverse(function(node){
+			if(node instanceof THREE.Mesh){
+				node.castShadow = true;
+				node.receiveShadow = true;
+			}
+		});
+		scene.add(mesh);
+		mesh.position.set(-80, -50, -150);
+		mesh.rotation.y = -Math.PI/4;
+	});
+    
+    
+    controls = new THREE.OrbitControls(camera,renderer.domElement);
+}
 
-		renderer.domElement.setAttribute("id", "fruits3DObj");
-		document.body.insertBefore(renderer.domElement, document.body.firstChild);
+function animate()
+{
+    controls.update();
+    requestAnimationFrame(animate);
+    renderer.render(scene, camera);
+}
 
-		const alight = new THREE.AmbientLight(0x404040, 1.2);
-		scene.add(alight);
 
-		const plight = new THREE.PointLight(0xffffff, 1.2);
-		plight.position.set(0, -3, 7);
-		scene.add(plight);
+	
 
-		let loader = new THREE.GLTFLoader();
-		let obj = gltf;
-		loader.load('', function(gltf){
-			obj = gltf;
-			obj.scene.scale.set(1.3, 1.3, 1.3);
+	requestAnimationFrame(render);
 
-			scene.add(obj.scene);
-		})
+	function render(){
 
-		function animate(){}
-		animate();
+		renderer.render(scene, camera);
+		requestAnimationFrame(render);
+	}
+
+	function animate()
+{
+    controls.update();
+    requestAnimationFrame(animate);
+    renderer.render(scene, camera);
+}
+	
 	</script>
 </body>
 </html>

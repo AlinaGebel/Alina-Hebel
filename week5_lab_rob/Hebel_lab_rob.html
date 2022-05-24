@@ -1,0 +1,50 @@
+<meta charset="utf-8">
+        <title>Завдання п'ятого тижня</title>
+
+ <script src="https://aframe.io/releases/1.2.0/aframe.min.js">  </script>
+ <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"> </script>
+ <script type="text/javascript">
+        window.addEventListener('camera-init', (data) => {console.log('camera-init', data);})
+        window.addEventListener('camera-error', (error) => {
+        console.log('camera-error', error);})
+
+        AFRAME.registerComponent('registerevents', {
+                init: function () {
+                        var marker = this.el;
+                        marker.addEventListener('markerFound', function() {
+                                console.log('markerFound', marker.id); });
+                        marker.addEventListener('markerLost', function() {
+                                console.log('markerLost', marker.id); }); }     });
+        AFRAME.registerComponent('jump', {
+                init: function () {
+                        var obj = this.el;
+                        obj.addEventListener('click', function () {
+                                this.setAttribute('position', (Math.random()-0.5)+ " 0 "  +  (Math.random()-1.5)); }); }}); 
+
+ </script>
+
+
+        <a-scene embedded vr-mode-ui="enabled: false" arjs="detectionMode: mono_and_matrix; 
+                matrixCodeType: 3x3;"> 
+        <a-marker type='pattern' url="pattern-atlas.patt" registerevents id="alina"> 
+                <a-torus position = "25 30 20" rotation="0 0 0" radius="5" material="color: red; opacity: 0.2; transparent: true"></a-torus> 
+       
+        <a-sky color="#00fa9a"></a-sky>
+
+        <a-entity position="25 30 20" rotation="0 0 0" animation="property: rotation; to: 0 0 -360; loop: true; dur: 5000">
+        <a-sphere position="0 5 0" color="#000080" radius="0.3" light="type: point; intensity: 1"></a-sphere>
+        </a-entity>
+
+        <a-entity position="25 30 20" rotation="0 0 0" animation="property: rotation; to: 0 0 360; loop: true; dur: 5000">
+        <a-sphere position="0 5 0" color="#000080" radius="0.3" light="type: point; intensity: 1"></a-sphere>
+        </a-entity>
+        
+        <a-entity light="color: #AFA; intensity: 1.5" position="30 30 30"></a-entity>
+        <a-camera position="25 30 28" cursor-visible="true" cursorscale="1" cursor-color="#0095DD" cursor-opacity="0.5"></a-camera>
+   <a-cursor></a-cursor>
+                </a-marker>
+
+                
+      <!--  <a-entity camera> <a-cursor></a-cursor> </a-entity>-->
+        </a-scene>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>11</title>
+</head>
+<body>
+	<script src="https://threejs.org/build/three.min.js"></script>
+	<script src="https://raw.githack.com/mrdoob/three.js/dev/examples/js/loaders/GLTFLoader.js"></script>
+
+	<script>
+		camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 20000);
+		scene = new THREE.Scene();
+		camera.position.z = 10;
+
+		renderer = new THREE.WebGLRenderer({alpha: true, antialias: true});
+		renderer.setClearColor(0x333333);
+		renderer.setSize(window.innerWidth, window.innerHeight);
+
+		renderer.domElement.setAttribute("id", "fruits3DObj");
+		document.body.insertBefore(renderer.domElement, document.body.firstChild);
+
+		const alight = new THREE.AmbientLight(0x404040, 1.2);
+		scene.add(alight);
+
+		const plight = new THREE.PointLight(0xffffff, 1.2);
+		plight.position.set(0, -3, 7);
+		scene.add(plight);
+
+		let loader = new THREE.GLTFLoader();
+		let obj = gltf;
+		loader.load('', function(gltf){
+			obj = gltf;
+			obj.scene.scale.set(1.3, 1.3, 1.3);
+
+			scene.add(obj.scene);
+		})
+
+		function animate(){}
+		animate();
+	</script>
+</body>
+</html>
